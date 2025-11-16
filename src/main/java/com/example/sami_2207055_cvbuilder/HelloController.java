@@ -9,6 +9,9 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Sami 1234");
     }
 }
+// git add .
+// git commit -m "Checking commit"
+// git push origin main
