@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.cvbuilder.controller.HomeController">
+
+    <top>
+        <Label text="CV Builder Application" styleClass="header"/>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" padding="30">
+            <Label text="Create and preview your professional CV!" styleClass="subtitle"/>
+            <Button text="Create New CV" onAction="#goToForm" styleClass="main-button"/>
+        </VBox>
+    </center>
+
+</BorderPane>
