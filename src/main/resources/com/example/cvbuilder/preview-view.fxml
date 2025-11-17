@@ -1,19 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<ScrollPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.cvbuilder.controller.PreviewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.cvbuilder.controller.PreviewController"
+            style="-fx-background-color: #2a4d69;">
 
-    <content>
-        <VBox fx:id="cvContainer" spacing="10"
-              style="-fx-text-fill: #2a4d69; -fx-font-size: 16px;">
+    <top>
+        <Label text="Your CV Preview"
+               style="-fx-text-fill: #ffffff; -fx-font-size: 28px; -fx-font-weight: bold;
+                      -fx-padding: 15;
+                      -fx-effect: dropshadow(gaussian, black, 3, 0.3, 0, 1);"/>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent;">
+            <content>
+                <VBox spacing="18" style="-fx-background-color: transparent;">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Label fx:id="nameLabel"
+                           style="-fx-text-fill: #ffffff; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+                    <Label fx:id="emailLabel"
+                           style="-fx-text-fill: #dbe9ff; -fx-font-weight: bold;"/>
+                    <Label fx:id="phoneLabel"
+                           style="-fx-text-fill: #dbe9ff; -fx-font-weight: bold;"/>
+                    <Label fx:id="addressLabel"
+                           style="-fx-text-fill: #dbe9ff; -fx-font-weight: bold;"/>
+
+                    <Label text="Education:"
+                           style="-fx-text-fill: #ffffff; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label fx:id="educationLabel"
+                           style="-fx-text-fill: #e8f1ff; -fx-font-weight: bold;"/>
+
+                    <Label text="Skills:"
+                           style="-fx-text-fill: #ffffff; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label fx:id="skillsLabel"
+                           style="-fx-text-fill: #e8f1ff; -fx-font-weight: bold;"/>
+
+                    <Label text="Experience:"
+                           style="-fx-text-fill: #ffffff; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label fx:id="experienceLabel"
+                           style="-fx-text-fill: #e8f1ff; -fx-font-weight: bold;"/>
+
+                    <Label text="Projects:"
+                           style="-fx-text-fill: #ffffff; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                    <Label fx:id="projectsLabel"
+                           style="-fx-text-fill: #e8f1ff; -fx-font-weight: bold;"/>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <VBox alignment="CENTER">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
-        </VBox>
-    </content>
 
-</ScrollPane>
+            <Button text="Back"
+                    onAction="#goBack"
+                    style="-fx-background-color: #ffffff; -fx-text-fill: #2a4d69;
+                           -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 10;"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

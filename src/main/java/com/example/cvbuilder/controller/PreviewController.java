@@ -1,26 +1,54 @@
 package com.example.cvbuilder.controller;
 
+import com.example.cvbuilder.Main;
 import com.example.cvbuilder.model.CV;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
 public class PreviewController {
 
-    @FXML
-    private VBox cvContainer;
+    @FXML private Label nameLabel;
+    @FXML private Label emailLabel;
+    @FXML private Label phoneLabel;
+    @FXML private Label addressLabel;
 
+    @FXML private Label educationLabel;
+    @FXML private Label skillsLabel;
+    @FXML private Label experienceLabel;
+    @FXML private Label projectsLabel;
+
+    // Set CV data into preview page
     public void setCV(CV cv) {
+        nameLabel.setText(cv.fullName);
+        emailLabel.setText(cv.email);
+        phoneLabel.setText(cv.phone);
+        addressLabel.setText(cv.address);
 
-        cvContainer.getChildren().clear();
+        educationLabel.setText(cv.education);
+        skillsLabel.setText(cv.skills);
+        experienceLabel.setText(cv.experience);
+        projectsLabel.setText(cv.projects);
+    }
 
-        cvContainer.getChildren().add(new Label("Full Name: " + cv.fullName));
-        cvContainer.getChildren().add(new Label("Email: " + cv.email));
-        cvContainer.getChildren().add(new Label("Phone: " + cv.phone));
-        cvContainer.getChildren().add(new Label("Address: " + cv.address));
-        cvContainer.getChildren().add(new Label("Education: " + cv.education));
-        cvContainer.getChildren().add(new Label("Skills: " + cv.skills));
-        cvContainer.getChildren().add(new Label("Experience: " + cv.experience));
-        cvContainer.getChildren().add(new Label("Projects: " + cv.projects));
+    // Back button → Returns to form page
+    @FXML
+    public void goBack(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("form-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
