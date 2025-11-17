@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -7,7 +8,11 @@
             fx:controller="com.example.cvbuilder.controller.PreviewController">
 
     <content>
-        <VBox fx:id="cvContainer" spacing="10" padding="20"/>
+        <VBox fx:id="cvContainer" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+        </VBox>
     </content>
 
 </ScrollPane>

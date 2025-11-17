@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.cvbuilder.controller.HomeController">
@@ -13,7 +14,11 @@
     </top>
 
     <center>
-        <VBox alignment="CENTER" spacing="20" padding="30">
+        <VBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
             <Label text="Create and preview your professional CV!" styleClass="subtitle"/>
             <Button text="Create New CV" onAction="#goToForm" styleClass="main-button"/>
         </VBox>

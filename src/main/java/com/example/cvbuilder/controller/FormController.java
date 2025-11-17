@@ -2,6 +2,7 @@ package com.example.cvbuilder.controller;
 
 import com.example.cvbuilder.Main;
 import com.example.cvbuilder.model.CV;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class FormController {
 
@@ -26,26 +25,30 @@ public class FormController {
     @FXML private TextArea projectsField;
 
     @FXML
-    private void generateCV(javafx.event.ActionEvent event) throws IOException {
+    public void generateCV(ActionEvent event) {
+        try {
+            CV cv = new CV();
+            cv.fullName = fullNameField.getText();
+            cv.email = emailField.getText();
+            cv.phone = phoneField.getText();
+            cv.address = addressField.getText();
+            cv.education = educationField.getText();
+            cv.skills = skillsField.getText();
+            cv.experience = experienceField.getText();
+            cv.projects = projectsField.getText();
 
-        CV cv = new CV();
-        cv.fullName = fullNameField.getText();
-        cv.email = emailField.getText();
-        cv.phone = phoneField.getText();
-        cv.address = addressField.getText();
-        cv.education = educationField.getText();
-        cv.skills = skillsField.getText();
-        cv.experience = experienceField.getText();
-        cv.projects = projectsField.getText();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("preview-view.fxml"));
+            Parent root = loader.load();
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("preview-view.fxml"));
-        Parent root = loader.load();
+            PreviewController controller = loader.getController();
+            controller.setCV(cv);
 
-        PreviewController controller = loader.getController();
-        controller.setCV(cv);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
