@@ -8,7 +8,8 @@
             fx:controller="com.example.cvbuilder.controller.PreviewController">
 
     <content>
-        <VBox fx:id="cvContainer" spacing="10">
+        <VBox fx:id="cvContainer" spacing="10"
+              style="-fx-text-fill: #2a4d69; -fx-font-size: 16px;">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>

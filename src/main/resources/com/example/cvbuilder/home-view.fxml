@@ -10,7 +10,14 @@
             fx:controller="com.example.cvbuilder.controller.HomeController">
 
     <top>
-        <Label text="CV Builder Application" styleClass="header"/>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label text="CV Builder Application" style="-fx-text-fill: #2a4d69; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            <Label text="Welcome to CV Builder!"
+                   style="-fx-text-fill: #4b86b4; -fx-font-size: 16px;"/>
+        </VBox>
     </top>
 
     <center>
@@ -19,8 +26,10 @@
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Create and preview your professional CV!" styleClass="subtitle"/>
-            <Button text="Create New CV" onAction="#goToForm" styleClass="main-button"/>
+
+
+            <Button text="Create New CV" onAction="#goToForm"
+                    style="-fx-background-color: #4b86b4; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-size: 14px; -fx-background-radius: 8;"/>
         </VBox>
     </center>
 
