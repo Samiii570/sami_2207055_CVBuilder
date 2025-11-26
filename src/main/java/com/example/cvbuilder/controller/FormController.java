@@ -1,19 +1,15 @@
 package com.example.cvbuilder.controller;
 
-import com.example.cvbuilder.Main;
 import com.example.cvbuilder.model.CV;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class FormController {
 
@@ -27,43 +23,33 @@ public class FormController {
     @FXML private TextArea experienceField;
     @FXML private TextArea projectsField;
 
-    @FXML private Label submissionMessage;
-
     @FXML
     public void generateCV(ActionEvent event) {
         try {
-            CV cv = new CV();
-            cv.fullName = fullNameField.getText();
-            cv.email = emailField.getText();
-            cv.phone = phoneField.getText();
-            cv.address = addressField.getText();
-            cv.education = educationField.getText();
-            cv.skills = skillsField.getText();
-            cv.experience = experienceField.getText();
-            cv.projects = projectsField.getText();
+            String fullName = fullNameField.getText();
+            String email = emailField.getText();
+            String phone = phoneField.getText();
+            String address = addressField.getText();
+            String education = educationField.getText();
+            String skills = skillsField.getText();
+            String experience = experienceField.getText();
+            String projects = projectsField.getText();
 
-            submissionMessage.setText("Thank you for your submission!");
-            submissionMessage.setVisible(true);
+            // Create CV object
+            CV cv = new CV(
+                    fullName, email, phone, address,
+                    education, skills, experience, projects
+            );
 
-            PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
-            delay.setOnFinished(e -> {
-                try {
-                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("preview-view.fxml"));
-                    Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/preview-view.fxml"));
+            Parent root = loader.load();
 
-                    PreviewController controller = loader.getController();
-                    controller.setCV(cv);
+            PreviewController controller = loader.getController();
+            controller.setCV(cv);
 
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-
-            delay.play();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
